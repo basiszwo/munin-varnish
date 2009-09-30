@@ -7,6 +7,7 @@ h3. Installation
 on your munin node do:
 <pre><code>
 cd /usr/share/munin/plugins (or your munin plugins directory)
-git clone git://github.com/basiszwo/munin-varnish.git
-ln -s /usr/share/munin/plugins/munin-varnish/varnish_* /etc/munin/plugins/
+sudo git clone git://github.com/basiszwo/munin-varnish.git
+sudo chmod a+x /usr/share/munin/plugins/munin-varnish/varnish*
+sudo ln -s /usr/share/munin/plugins/munin-varnish/varnish_* /etc/munin/plugins/
 </code></pre>
