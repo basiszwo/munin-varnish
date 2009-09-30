@@ -1,0 +1,8 @@
+h2. Varnish plugins for munin monitoring
+
+These plugins are originally taken from http://muninexchange.projects.linpro.no/?search=&cid=37&os[4]=on&os[7]=on&os[3]=on&os[2]=on&os[5]=on&os[8]=on&os[1]=on&os[6]=on to have a git repository to check out on every munin node
+
+h3. Installation
+
+git clone git://github.com/basiszwo/munin-varnish.git
+ln -s /usr/share/munin/plugins/munin-varnish/varnish_* /etc/munin/plugins/
