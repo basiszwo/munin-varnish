@@ -11,3 +11,14 @@ sudo git clone git://github.com/basiszwo/munin-varnish.git
 sudo chmod a+x /usr/share/munin/plugins/munin-varnish/varnish*
 sudo ln -s /usr/share/munin/plugins/munin-varnish/varnish_* /etc/munin/plugins/
 </code></pre>
+
+change your munin node config and add the following to /etc/munin/plugin-conf.d/munin-node
+<pre><code>
+[varnish*]
+user root
+</code></pre>
+
+restart your munin node:
+<pre><code>
+sudo /etc/init.d/munin-node restart
+</code></pre>
