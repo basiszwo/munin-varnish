@@ -4,5 +4,9 @@ These plugins are originally taken from http://muninexchange.projects.linpro.no/
 
 h3. Installation
 
+on your munin node do:
+<pre><code>
+cd /usr/share/munin/plugins (or your munin plugins directory)
 git clone git://github.com/basiszwo/munin-varnish.git
 ln -s /usr/share/munin/plugins/munin-varnish/varnish_* /etc/munin/plugins/
+</pre></code>
