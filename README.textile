@@ -1,14 +1,16 @@
 h2. Varnish plugins for munin monitoring
 
+h3. Plugins Version 1
+
 These plugins are originally taken from "muninexchange":http://muninexchange.projects.linpro.no/?search=&cid=37&os[4]=on&os[7]=on&os[3]=on&os[2]=on&os[5]=on&os[8]=on&os[1]=on&os[6]=on to have a git repository to check out on every munin node
 
-h3. Installation
+h4. Installation
 
 on your munin node do:
 <pre><code>
 cd /usr/share/munin/plugins (or your munin plugins directory)
 sudo git clone git://github.com/basiszwo/munin-varnish.git
-sudo chmod a+x /usr/share/munin/plugins/munin-varnish/varnish*
+sudo chmod a+x /usr/share/munin/plugins/munin-varnish/varnish_*
 sudo ln -s /usr/share/munin/plugins/munin-varnish/varnish_* /etc/munin/plugins/
 </code></pre>
 
@@ -22,3 +24,80 @@ restart your munin node:
 <pre><code>
 sudo /etc/init.d/munin-node restart
 </code></pre>
+
+h4. Munin graphs
+
+!http://github.com/basiszwo/munin-varnish/raw/master/assets/munin-varnish-v1.png(Munin graphs for varnish v1)!
+
+h3. Plugin Version 2
+
+This munin plugin vor Varnish 2.x is taken from the "official varnish site":http://varnish.projects.linpro.no/browser/trunk/varnish-tools/munin/varnish_
+
+As it was a bit tricky to get this plugin running I want to share my experiences with it.
+
+h4. Installation
+
+on your munin node do:
+<pre><code>
+cd /usr/share/munin/plugins (or your munin plugins directory)
+sudo git clone git://github.com/basiszwo/munin-varnish.git
+sudo chmod a+x /usr/share/munin/plugins/munin-varnish/varnish2_
+</code></pre>
+
+Depending on what you want to monitor link the varnish2_ script to one of the following:
+
+hit_rate, request_rate, objects, backend_traffic, transfer_rates, threads, memory_usage, uptime, vcl_and_purges, expunge, vcl_and_purges, lru, allocations, shm, shm_writes, session, session_herd, objoverflow, esi, hcb, obj_sendfile_vs_write, losthdr, objects_per_objhead
+
+h4. Recommended
+
+<pre><code>
+ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_hit_rate
+ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_request_rate
+ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_objects
+ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_backend_traffic
+ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_transfer_rates
+ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_threads
+ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_memory_usage
+ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_uptime
+ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_vcl_and_purges
+</code></pre>
+
+
+h4. Interesting depending your setup
+
+<pre><code>
+ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_expunge; 
+ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_vcl_and_purges; 
+ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_lru; 
+ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_allocations; 
+ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_shm; 
+ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_shm_writes; 
+ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_session; 
+ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_session_herd; 
+ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_objoverflow; 
+ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_esi; 
+ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_hcb; 
+ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_obj_sendfile_vs_write; 
+ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_losthdr; 
+ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_objects_per_objhead;
+</code></pre>
+
+h4. Configuration for munin node
+
+Config file is _/etc/munin/plugin-conf.d/munin-node_
+
+<pre><code>
+[varnish_*]
+  user root
+  env.varnishstat varnishstat
+  env.name
+</code></pre>
+
+restart your munin node:
+<pre><code>
+sudo /etc/init.d/munin-node restart
+</code></pre>
+
+h4. Munin graphs
+
+!http://github.com/basiszwo/munin-varnish/raw/master/assets/munin-varnish-v2.png(Munin graphs for varnish v2)!
