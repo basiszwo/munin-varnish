@@ -31,7 +31,7 @@ h4. Munin graphs
 
 h3. Plugin Version 2
 
-This munin plugin vor Varnish 2.x is taken from the "official varnish site":http://varnish.projects.linpro.no/browser/trunk/varnish-tools/munin/varnish_
+This munin plugin for Varnish 2.x "has been removed":http://www.varnish-cache.org/trac/changeset/5353 from the varnish repostory. You may find it in the "official munin repository":http://exchange.munin-monitoring.org/plugins/search?keyword=varnish
 
 As it was a bit tricky to get this plugin running I want to share my experiences with it.
 
@@ -51,35 +51,35 @@ hit_rate, request_rate, objects, backend_traffic, transfer_rates, threads, memor
 h4. Recommended
 
 <pre><code>
-ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_hit_rate
-ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_request_rate
-ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_objects
-ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_backend_traffic
-ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_transfer_rates
-ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_threads
-ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_memory_usage
-ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_uptime
-ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_vcl_and_purges
+ln -s /usr/share/munin/plugins/varnish2_ /etc/munin/plugins/varnish2_hit_rate
+ln -s /usr/share/munin/plugins/varnish2_ /etc/munin/plugins/varnish2_request_rate
+ln -s /usr/share/munin/plugins/varnish2_ /etc/munin/plugins/varnish2_objects
+ln -s /usr/share/munin/plugins/varnish2_ /etc/munin/plugins/varnish2_backend_traffic
+ln -s /usr/share/munin/plugins/varnish2_ /etc/munin/plugins/varnish2_transfer_rates
+ln -s /usr/share/munin/plugins/varnish2_ /etc/munin/plugins/varnish2_threads
+ln -s /usr/share/munin/plugins/varnish2_ /etc/munin/plugins/varnish2_memory_usage
+ln -s /usr/share/munin/plugins/varnish2_ /etc/munin/plugins/varnish2_uptime
+ln -s /usr/share/munin/plugins/varnish2_ /etc/munin/plugins/varnish2_vcl_and_purges
 </code></pre>
 
 
 h4. Interesting depending your setup
 
 <pre><code>
-ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_expunge; 
-ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_vcl_and_purges; 
-ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_lru; 
-ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_allocations; 
-ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_shm; 
-ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_shm_writes; 
-ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_session; 
-ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_session_herd; 
-ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_objoverflow; 
-ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_esi; 
-ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_hcb; 
-ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_obj_sendfile_vs_write; 
-ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_losthdr; 
-ln -s /usr/share/munin/plugins/varnish_ /etc/munin/plugins/varnish_objects_per_objhead;
+ln -s /usr/share/munin/plugins/varnish2_ /etc/munin/plugins/varnish2_expunge; 
+ln -s /usr/share/munin/plugins/varnish2_ /etc/munin/plugins/varnish2_vcl_and_purges; 
+ln -s /usr/share/munin/plugins/varnish2_ /etc/munin/plugins/varnish2_lru; 
+ln -s /usr/share/munin/plugins/varnish2_ /etc/munin/plugins/varnish2_allocations; 
+ln -s /usr/share/munin/plugins/varnish2_ /etc/munin/plugins/varnish2_shm; 
+ln -s /usr/share/munin/plugins/varnish2_ /etc/munin/plugins/varnish2_shm_writes; 
+ln -s /usr/share/munin/plugins/varnish2_ /etc/munin/plugins/varnish2_session; 
+ln -s /usr/share/munin/plugins/varnish2_ /etc/munin/plugins/varnish2_session_herd; 
+ln -s /usr/share/munin/plugins/varnish2_ /etc/munin/plugins/varnish2_objoverflow; 
+ln -s /usr/share/munin/plugins/varnish2_ /etc/munin/plugins/varnish2_esi; 
+ln -s /usr/share/munin/plugins/varnish2_ /etc/munin/plugins/varnish2_hcb; 
+ln -s /usr/share/munin/plugins/varnish2_ /etc/munin/plugins/varnish2_obj_sendfile_vs_write; 
+ln -s /usr/share/munin/plugins/varnish2_ /etc/munin/plugins/varnish2_losthdr; 
+ln -s /usr/share/munin/plugins/varnish2_ /etc/munin/plugins/varnish2_objects_per_objhead;
 </code></pre>
 
 h4. Configuration for munin node
@@ -87,7 +87,7 @@ h4. Configuration for munin node
 Config file is _/etc/munin/plugin-conf.d/munin-node_
 
 <pre><code>
-[varnish_*]
+[varnish2_*]
   user root
   env.varnishstat varnishstat
   env.name
