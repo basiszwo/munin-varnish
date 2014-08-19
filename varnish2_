@@ -750,7 +750,7 @@ sub get_config
 sub set_aspect
 {
 	$self = $0;
-	$self =~ s/^.*\/varnish_//;
+	$self =~ s/^.*\/varnish2_//;
 	if (!defined($ASPECTS{$self}) && @ARGV == 0) {
 		usage "No such aspect";
 	}
